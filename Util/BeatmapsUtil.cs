@@ -20,18 +20,14 @@
 		}
 
 		public static int GetCharacteristicFromDifficulty(BeatmapKey diff) {
-			var d = diff.beatmapCharacteristic?.sortingOrder;
-
-			if(d == null || d > 4)
-				return 0;
-
-			// 360 and 90 are "flipped" as far as the enum goes
-			if(d == 3)
-				d = 4;
-			else if(d == 4)
-				d = 3;
-
-			return (int)d + 1;
+			return diff.characteristic switch {
+				BeatmapCharacteristic.Standard => 1,
+				BeatmapCharacteristic.OneSaber => 2,
+				BeatmapCharacteristic.NoArrows => 3,
+				BeatmapCharacteristic.Degree360 => 5,
+				BeatmapCharacteristic.Degree90 => 4,
+				_ => 0
+			};
 		}
 
 		public static string ConcatMappers(string[] allmappers) {

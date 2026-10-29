@@ -138,7 +138,7 @@ namespace BetterSongList.HarmonyPatches.UI {
 				}
 
 				// Basegame maps have no NJS or JD
-				var basicData = __instance._beatmapLevel.GetDifficultyBeatmapData(beatmapKey.beatmapCharacteristic, beatmapKey.difficulty);
+				var basicData = __instance._beatmapLevel.GetDifficultyBeatmapData(beatmapKey.characteristic, beatmapKey.difficulty);
 				var njs = basicData?.noteJumpMovementSpeed ?? 0;
 				if(njs == 0)
 					njs = beatmapKey.difficulty.DefaultNoteJumpMovementSpeed();
